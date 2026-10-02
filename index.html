@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ana 💖</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff0f5, #ffe4ec, #ffd6e0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .botao-container {
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .botao {
+            padding: 18px 40px;
+            font-size: 22px;
+            background: linear-gradient(45deg, #ff69b4, #ff85c1);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .botao:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+        }
+
+        .conteudo {
+            display: none;
+            max-width: 400px;
+            text-align: center;
+            animation: aparecer 1s ease forwards;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .foto {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.25);
+            margin-bottom: 25px;
+        }
+
+        .texto {
+            font-size: 20px;
+            color: #8b0050;
+            line-height: 1.8;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(255, 105, 180, 0.2);
+        }
+
+        .flor {
+            position: fixed;
+            top: -50px;
+            font-size: 28px;
+            animation: cair linear forwards;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes cair {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="botao-container" id="inicio">
+        <button class="botao" onclick="abrir()">💖 Clica aqui 💖</button>
+    </div>
+
+    <div class="conteudo" id="conteudo">
+        <img src="ana.jpg" alt="Ana" class="foto">
+        
+        <div class="texto">
+            Você brilha de um jeito único ✨<br><br>
+            Faz tudo ficar mais bonito<br>
+            só por estar aqui. 💫<br><br>
+            O seu sorriso é o que mais gosto<br>
+            de ver no mundo inteiro. 🌸<br><br>
+            Fica sabendo que tô sempre ao seu lado ❤️❤️ 🤟🏻🤟🏻🤟🏻<br>
+            cuidando de você, sempre. 🥰<br><br>
+            Brayan 🤟🏻
+        </div>
+    </div>
+
+    <audio id="musica" loop>
+        <source src="BALARINA.mp3" type="audio/mpeg">
+    
+
+<script>
+function abrir() {
+    document.getElementById('inicio').style.display = 'none';
+    document.getElementById('conteudo').style.display = 'block';
+    
+    const musica = document.getElementById('musica');
+    musica.volume = 0.5;
+    musica.play().catch(e => console.log('Clica pra tocar', e));
+    
+    cairFlores();
+}
+
+function cairFlores() {
+    const flores = ['🌸', '🌷', '🌹', '💐', '🌺', '✨', '❤️', '🤟🏻', '💕', '🌼'];
+    
+    setInterval(() => {
+        const flor = document.createElement('div');
+        flor.classList.add('flor');
+        flor.textContent = flores[Math.floor(Math.random() * flores.length)];
+        flor.style.left = Math.random() * 100 + 'vw';
+        flor.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        document.body.appendChild(flor);
+        
+        setTimeout(() => flor.remove(), 7000);
+    }, 250);
+}
+</script>
+
+</body>
+</html>
